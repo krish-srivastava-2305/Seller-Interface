@@ -1,5 +1,3 @@
-import exp from "constants";
-
 abstract class CustomError extends Error {
     abstract statusCode: number;
 

@@ -18,7 +18,7 @@ app.use(cors())
 
 
 // handle invalid routes
-app.use("*", () => {
+app.all("*", () => {
     throw new NotFoundError();
 });
 
