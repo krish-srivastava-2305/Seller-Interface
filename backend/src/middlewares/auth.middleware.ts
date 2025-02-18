@@ -5,14 +5,16 @@ import { AutheticatedRequest } from "../types/IRequest";
 
 const auth = async (req: AutheticatedRequest, res: Response, next: NextFunction) => {
     const token = req.cookies.token;
+    console.log(token);
     if (!token) {
         throw new NotAuthorizedError();
     }
-    const decodedToken = jwt.verify(token, process.env.JWT_SECRET!) as { email: string };
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET!) as { userId: string };
     if (!decodedToken) {
         throw new NotAuthorizedError();
     }
-    req.user = decodedToken.email;
+    console.log(decodedToken)
+    req.user = decodedToken.userId;
     next();
 }
 

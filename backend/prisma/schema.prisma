@@ -21,8 +21,9 @@ model user {
 }
 
 model product {
-  id          String  @id
+  id          String  @id @default(uuid())
   name        String
+  price       String
   description String?
   user        user    @relation(fields: [email], references: [email])
   email       String
