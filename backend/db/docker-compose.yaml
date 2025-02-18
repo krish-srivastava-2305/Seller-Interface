@@ -1,0 +1,24 @@
+services: 
+  db:
+    container_name: db
+    image: postgres:13
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: seller-prod
+      POSTGRES_PASSWORD: traya-tech
+      POSTGRES_DB: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080 
+
+volumes:
+  pgdata: {}
+
+# connection string for the database: postgres://seller-prod:traya-tech@db:5432/postgres
