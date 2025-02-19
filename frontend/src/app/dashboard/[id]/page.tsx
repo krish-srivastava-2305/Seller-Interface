@@ -12,23 +12,23 @@ interface Product {
 }
 
 export default function Product() {
-    const params = useParams()
-    const [productId, setProductId] = useState(params?.id)
-    const [product, setProduct] = useState<Product>()
+    const params = useParams();
+    const [product, setProduct] = useState<Product>();
+
     useEffect(() => {
         const getProduct = async () => {
             try {
-                const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}`, {
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products/${params.id}`, {
                     withCredentials: true
-                })
-                setProduct(res.data[0].product)
-                console.log(product)
+                });
+                setProduct(res.data[0].product);
             } catch (error) {
-                console.error(error)
+                console.error(error);
             }
-        }
-        getProduct()
-    }, [productId])
+        };
+        getProduct();
+    }, [params.id]);
+
     return (
         <div className="flex justify-center items-center h-screen w-full">
             {product ? <SingleProduct name={product.name} price={product.price} description={product.description} id={product.id} /> : <div>Loading...</div>}

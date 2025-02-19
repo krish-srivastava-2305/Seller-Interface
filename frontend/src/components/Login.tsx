@@ -1,14 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface LoginProps {
     setIsLogin: (value: boolean) => void;
-    router: any;
 }
 
-export const Login: React.FC<LoginProps> = ({ setIsLogin, router }) => {
+export const Login: React.FC<LoginProps> = ({ setIsLogin }) => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const router = useRouter()
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -62,7 +63,7 @@ export const Login: React.FC<LoginProps> = ({ setIsLogin, router }) => {
                         Login
                     </button>
                     <p className="text-center text-sm text-gray-600">
-                        Don't have an account?{' '}
+                        Don&apos;t have an account?{' '}
                         <button
                             type="button"
                             onClick={() => setIsLogin(false)}

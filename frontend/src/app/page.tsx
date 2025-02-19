@@ -2,12 +2,10 @@
 import { Login } from "@/components/Login";
 import { Signup } from "@/components/Signup";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Home() {
   const [isLogin, setIsLogin] = useState<boolean>(true);
-  const router = useRouter();
 
   return (
     <div className="min-h-screen flex flex-col justify-between items-center bg-gradient-to-b from-gray-50 to-gray-200 py-8">
@@ -18,12 +16,10 @@ export default function Home() {
       <div className="flex-1 flex items-center justify-center py-8">
         {isLogin ?
           <Login
-            setIsLogin={setIsLogin}
-            router={router} />
+            setIsLogin={setIsLogin} />
           :
           <Signup
-            setIsLogin={setIsLogin}
-            router={router} />}
+            setIsLogin={setIsLogin} />}
       </div>
       <div className="mt-8">
         <Link

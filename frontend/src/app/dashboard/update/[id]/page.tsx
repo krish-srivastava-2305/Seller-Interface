@@ -26,8 +26,8 @@ const UpdateProduct: React.FC = () => {
                 );
                 setProduct(response.data[0].product);
                 setLoading(false);
-            } catch (error) {
-                setError('Failed to fetch product details');
+            } catch (err) {
+                setError(`Failed to fetch product details ${err}`);
                 setLoading(false);
             }
         };
@@ -53,8 +53,8 @@ const UpdateProduct: React.FC = () => {
                 );
                 router.push('/dashboard');
             }
-        } catch (error) {
-            setError('Failed to update product');
+        } catch (err) {
+            setError(`Failed to update product ${err}`);
         }
     };
 

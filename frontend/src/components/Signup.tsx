@@ -1,15 +1,16 @@
 import axios from "axios";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface SignupProps {
     setIsLogin: (value: boolean) => void;
-    router: any
 }
 
-export const Signup: React.FC<SignupProps> = ({ setIsLogin, router }) => {
+export const Signup: React.FC<SignupProps> = ({ setIsLogin }) => {
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const router = useRouter()
 
     const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault();
