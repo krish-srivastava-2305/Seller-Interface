@@ -4,8 +4,7 @@ import { NotAuthorizedError } from "../errors/not-authorized.error";
 import { AutheticatedRequest } from "../types/IRequest";
 
 const auth = async (req: AutheticatedRequest, res: Response, next: NextFunction) => {
-    const token = req.cookies.token;
-    console.log(token);
+    const token = req.cookies.token
     if (!token) {
         throw new NotAuthorizedError();
     }
@@ -13,7 +12,6 @@ const auth = async (req: AutheticatedRequest, res: Response, next: NextFunction)
     if (!decodedToken) {
         throw new NotAuthorizedError();
     }
-    console.log(decodedToken)
     req.user = decodedToken.userId;
     next();
 }
